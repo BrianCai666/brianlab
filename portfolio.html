@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>作品 · Brian</title>
+    <meta name="description" content="Brian 的作品集：项目、工具与实验。" />
+    <meta name="theme-color" content="#fbfbfd" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9A%A1%3C/text%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <nav class="nav">
+      <div class="nav-inner">
+        <a class="nav-logo" href="index.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="16 18 22 12 16 6"></polyline>
+            <polyline points="8 6 2 12 8 18"></polyline>
+          </svg>
+          Brian
+        </a>
+        <ul class="nav-links">
+          <li><a class="nav-link" href="index.html">首页</a></li>
+          <li><a class="nav-link" href="blog.html">博客</a></li>
+          <li><a class="nav-link" href="portfolio.html">作品</a></li>
+          <li><a class="nav-link" href="about.html">关于</a></li>
+        </ul>
+        <button class="nav-toggle" aria-label="菜单">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+      <div class="nav-mobile">
+        <a href="index.html">首页</a>
+        <a href="blog.html">博客</a>
+        <a href="portfolio.html">作品</a>
+        <a href="about.html">关于</a>
+      </div>
+    </nav>
+
+    <header class="section" style="padding-top: 64px; padding-bottom: 32px;">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="section-eyebrow">Portfolio</p>
+          <h1 class="section-title">作品</h1>
+          <p class="section-sub">把想法变成可运行的代码。</p>
+        </div>
+        <div id="project-featured">
+          <div class="empty"><span class="spinner"></span></div>
+        </div>
+      </div>
+    </header>
+
+    <section class="section" style="padding-top: 0;">
+      <div class="container">
+        <div class="section-header reveal">
+          <h2 class="section-title" style="font-size: 2rem">更多项目</h2>
+        </div>
+        <div class="grid grid-3" id="project-grid">
+          <div class="empty" style="grid-column: 1/-1"><span class="spinner"></span></div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-inner">
+          <p class="footer-text">© <span data-year>2026</span> Brian. All rights reserved.</p>
+          <ul class="footer-links">
+            <li><a href="https://github.com/" target="_blank" rel="noopener">GitHub</a></li>
+            <li><a href="mailto:[email protected]">Email</a></li>
+            <li><a href="about.html">关于</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/portfolio.js"></script>
+  </body>
+</html>

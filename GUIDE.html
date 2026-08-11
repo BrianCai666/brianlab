@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>维护与扩展指南 · Brian</title>
+    <meta name="description" content="Brian's Website 的维护与扩展指南。" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9A%A1%3C/text%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <style>
+      .guide {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 64px 24px 96px;
+      }
+      .guide h1 {
+        font-size: clamp(2rem, 4vw, 3rem);
+        margin-bottom: 24px;
+        letter-spacing: -0.025em;
+        line-height: 1.15;
+      }
+      .guide h2 {
+        font-size: 1.75rem;
+        margin-top: 64px;
+        margin-bottom: 16px;
+        padding-top: 24px;
+        border-top: 1px solid var(--border);
+        letter-spacing: -0.02em;
+      }
+      .guide h3 {
+        font-size: 1.25rem;
+        margin-top: 32px;
+        margin-bottom: 12px;
+        letter-spacing: -0.018em;
+      }
+      .guide h4 {
+        font-size: 1.0625rem;
+        margin-top: 24px;
+        margin-bottom: 8px;
+        font-weight: 600;
+      }
+      .guide p { margin: 12px 0; color: var(--text); line-height: 1.7; }
+      .guide ul, .guide ol { padding-left: 1.5em; margin: 12px 0; }
+      .guide li { margin: 6px 0; line-height: 1.6; }
+      .guide code {
+        font-family: var(--font-mono);
+        font-size: 0.9em;
+        padding: 2px 6px;
+        background: var(--bg-muted);
+        border-radius: 4px;
+      }
+      .guide pre {
+        background: #1d1d1f;
+        color: #f5f5f7;
+        padding: 20px 24px;
+        border-radius: var(--radius);
+        overflow-x: auto;
+        font-size: 0.875rem;
+        line-height: 1.6;
+        margin: 16px 0;
+      }
+      .guide pre code { background: none; padding: 0; color: inherit; }
+      .guide hr {
+        border: none;
+        border-top: 1px solid var(--border);
+        margin: 48px auto;
+        max-width: 200px;
+      }
+      .guide blockquote {
+        margin: 16px 0;
+        padding: 4px 0 4px 20px;
+        border-left: 3px solid var(--accent);
+        color: var(--text-secondary);
+      }
+      .guide a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.2s; }
+      .guide a:hover { border-bottom-color: var(--accent); }
+      .guide strong { color: var(--text); font-weight: 600; }
+      .guide-toc {
+        background: var(--bg-soft);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 24px 28px;
+        margin: 32px 0 48px;
+      }
+      .guide-toc-title {
+        font-size: 0.8125rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--text-tertiary);
+        margin-bottom: 12px;
+        font-weight: 500;
+      }
+      .guide-toc ol { list-style: none; padding: 0; margin: 0; }
+      .guide-toc li { margin: 6px 0; }
+      .guide-toc a { font-size: 0.9375rem; }
+    </style>
+  </head>
+  <body>
+    <nav class="nav">
+      <div class="nav-inner">
+        <a class="nav-logo" href="index.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="16 18 22 12 16 6"></polyline>
+            <polyline points="8 6 2 12 8 18"></polyline>
+          </svg>
+          Brian
+        </a>
+        <ul class="nav-links">
+          <li><a class="nav-link" href="index.html">首页</a></li>
+          <li><a class="nav-link" href="blog.html">博客</a></li>
+          <li><a class="nav-link" href="portfolio.html">作品</a></li>
+          <li><a class="nav-link" href="about.html">关于</a></li>
+        </ul>
+        <button class="nav-toggle" aria-label="菜单">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+      <div class="nav-mobile">
+        <a href="index.html">首页</a>
+        <a href="blog.html">博客</a>
+        <a href="portfolio.html">作品</a>
+        <a href="about.html">关于</a>
+      </div>
+    </nav>
+
+    <main class="guide">
+      <h1>Brian's Website 维护与扩展指南</h1>
+
+      <nav class="guide-toc">
+        <div class="guide-toc-title">目录</div>
+        <ol>
+          <li><a href="#sec-1">整体架构与文件清单</a></li>
+          <li><a href="#sec-2">日常内容更新流程</a></li>
+          <li><a href="#sec-3">各部位修改指南</a></li>
+          <li><a href="#sec-4">紧急排错清单</a></li>
+          <li><a href="#sec-5">版本演进路线（可选）</a></li>
+        </ol>
+      </nav>
+
+      <h2 id="sec-1">一、整体架构与文件清单</h2>
+
+      <h3>顶层 HTML 页面（共 5 个，对应网站 5 个一级入口）</h3>
+      <ul>
+        <li><code>index.html</code> — 首页。英雄区 + 最新文章 + 精选作品。</li>
+        <li><code>blog.html</code> — 博客列表。从 <code>data/posts.json</code> 动态渲染。</li>
+        <li><code>post.html</code> — 文章详情通用模板。通过 <code>?slug=xxx</code> 加载任意文章。</li>
+        <li><code>portfolio.html</code> — 作品集。从 <code>data/projects.json</code> 动态渲染。</li>
+        <li><code>about.html</code> — 关于页。个人简介、技术栈、联系方式。</li>
+      </ul>
+
+      <h3>数据层（JSON 是「唯一真相源」）</h3>
+      <ul>
+        <li><code>data/posts.json</code> — 全部文章的元数据索引。结构：<code>{ categories:[...], posts:[...] }</code></li>
+        <li><code>data/projects.json</code> — 全部作品的元数据索引。结构：<code>{ projects:[...] }</code></li>
+      </ul>
+
+      <h3>内容层（Markdown 源文件）</h3>
+      <pre><code>posts/
+├── mathematics/        # 数学分类下的所有 .md 文章
+├── finance/            # 金融分类
+├── computer-science/   # 计算机分类
+├── history/            # 历史分类
+└── random/             # 杂谈分类</code></pre>
+      <blockquote>注意：分类文件夹名必须与 <code>posts.json</code> 中 categories 的 slug 一一对应。</blockquote>
+
+      <h3>样式与脚本</h3>
+      <ul>
+        <li><code>assets/css/style.css</code> — 全部 Apple 极简风样式、CSS 变量、响应式。</li>
+        <li><code>assets/js/main.js</code> — 导航、毛玻璃、滚动渐入 IntersectionObserver。</li>
+        <li><code>assets/js/home.js</code> — 首页「最新文章」「精选作品」渲染。</li>
+        <li><code>assets/js/blog.js</code> — 博客列表 + 分类 tab 切换。</li>
+        <li><code>assets/js/post.js</code> — 文章详情：取索引、读 .md、剥离 frontmatter、调用 marked.js 渲染、highlight.js 高亮。</li>
+        <li><code>assets/js/portfolio.js</code> — 作品集：featured 大图 + 网格卡片。</li>
+      </ul>
+
+      <h3>外部 CDN 依赖（在 <code>post.html</code> 中通过 <code>&lt;script src="..."&gt;</code> 引入）</h3>
+      <ul>
+        <li><strong>marked.js</strong> — Markdown → HTML</li>
+        <li><strong>highlight.js</strong> — 代码块语法高亮</li>
+      </ul>
+      <p>这两个只在 <code>post.html</code> 用到，加载失败不会影响其他页面。</p>
+
+      <hr />
+
+      <h2 id="sec-2">二、日常内容更新流程</h2>
+
+      <h3>场景 A：新增一篇文章（最常见）</h3>
+
+      <h4>步骤 1 — 写 Markdown</h4>
+      <p>在 <code>posts/{分类}/</code> 下新建文件，比如 <code>posts/mathematics/godel.md</code>。推荐在文件开头加 YAML frontmatter（<code>post.js</code> 会自动剥离）：</p>
+      <pre><code>---
+title: 哥德尔不完备定理笔记
+date: 2026-08-12
+category: 数学
+---
+
+正文用标准 Markdown 语法。代码块用 ``` 包裹，可标注语言
+（如 ```python）触发代码高亮。图片用 R2 绝对 URL 直接插入。</code></pre>
+
+      <h4>步骤 2 — 在 <code>data/posts.json</code> 的 <code>posts</code> 数组里追加一条索引：</h4>
+      <pre><code>{
+  "slug": "godel",
+  "title": "哥德尔不完备定理笔记",
+  "category": "mathematics",
+  "date": "2026-08-12",
+  "excerpt": "一句话摘要，会显示在卡片上",
+  "cover": "https://media.brian.com/posts/godel/cover.jpg",
+  "tags": ["数理逻辑", "Gödel"],
+  "file": "posts/mathematics/godel.md"
+}</code></pre>
+      <blockquote><code>slug</code> 命名规则：小写英文 + 短横线，避免中文（URL 更干净）。</blockquote>
+
+      <h4>步骤 3 — 上传封面图到 Cloudflare R2</h4>
+      <ul>
+        <li>推荐目录结构：<code>media.brian.com/posts/{分类}/{slug}/cover.jpg</code></li>
+        <li>工具建议：
+          <ul>
+            <li>桌面端：用 rclone sync 或 Cyberduck / Mountain Duck</li>
+            <li>命令行：<code>rclone sync ./images r2:media/posts</code></li>
+          </ul>
+        </li>
+        <li>写文章时直接把 R2 上的最终 URL 粘到 <code>cover</code> 字段。</li>
+      </ul>
+
+      <h4>步骤 4 — 本地预览</h4>
+      <p>浏览器打开 <code>http://localhost:8000/blog.html</code>，分类 tab 切换、点开文章查看 Markdown 渲染、代码高亮是否正常。</p>
+
+      <h4>步骤 5 — 部署到 GitHub Pages</h4>
+      <pre><code>cd "Brian's website"
+git add .
+git commit -m "post: godel"
+git push origin main</code></pre>
+      <p>推送后 30 秒内 GitHub Pages 会自动部署，线上立刻可见。整个流程无需任何后端、无需重新构建。</p>
+
+      <h3>场景 B：新增一个作品</h3>
+      <p>在 <code>data/projects.json</code> 的 <code>projects</code> 数组里追加：</p>
+      <pre><code>{
+  "slug": "alpha-lab",
+  "title": "AlphaLab",
+  "tagline": "一句话亮点（出现在卡片和首页）",
+  "description": "2-3 句详细说明（出现在作品集大图区）",
+  "cover": "https://media.brian.com/projects/alpha-lab/cover.jpg",
+  "tags": ["Python", "Pandas"],
+  "github": "https://github.com/yourname/alpha-lab",
+  "featured": true,
+  "year": "2026"
+}</code></pre>
+      <ul>
+        <li><code>featured: true</code> 出现在作品集顶部大图，其余进入下方网格。</li>
+        <li>上传项目封面到 R2：<code>media.brian.com/projects/{slug}/cover.jpg</code></li>
+        <li>其他流程与文章一致。</li>
+      </ul>
+
+      <hr />
+
+      <h2 id="sec-3">三、各部位修改指南</h2>
+
+      <h3>3.1 修改导航栏 / 全站页脚</h3>
+      <p>所有页面的 <code>&lt;nav class="nav"&gt;</code> 和 <code>&lt;footer class="footer"&gt;</code> 块完全相同。</p>
+
+      <p><strong>修改方法</strong>：</p>
+      <ol>
+        <li>改完 <code>index.html</code> 中的导航和页脚</li>
+        <li>把同一段复制到 <code>blog.html</code>、<code>post.html</code>、<code>portfolio.html</code>、<code>about.html</code></li>
+      </ol>
+
+      <p><strong>进阶做法（推荐）</strong>：把导航和页脚抽出到独立片段，等以后想用 Eleventy / Astro 时可直接接入组件系统。本模板刻意保持纯静态，便于理解与维护。</p>
+
+      <h3>3.2 修改首页 Hero 简介</h3>
+      <p>打开 <code>index.html</code>，找到：</p>
+      <pre><code>&lt;p class="hero-eyebrow reveal"&gt;Researcher · Engineer · Writer&lt;/p&gt;
+&lt;h1 class="hero-title reveal"&gt;用代码与文字，&lt;br /&gt;探索世界的底层逻辑。&lt;/h1&gt;
+&lt;p class="hero-sub reveal"&gt;数学、金融、计算机与历史之间的交叉地带。&lt;/p&gt;</code></pre>
+      <p>直接改这三行的文字即可。</p>
+      <p>Hero 下方「开始阅读 / 查看作品」两个按钮：</p>
+      <pre><code>&lt;a class="btn btn-primary" href="blog.html"&gt;开始阅读&lt;/a&gt;
+&lt;a class="btn btn-secondary" href="portfolio.html"&gt;查看作品&lt;/a&gt;</code></pre>
+      <p>想换成自定义跳转（如同名 GitHub 主页），改 <code>href</code> 即可。</p>
+
+      <h3>3.3 修改关于页内容</h3>
+      <p>打开 <code>about.html</code>，按需修改：</p>
+      <ul>
+        <li><strong>「研究兴趣」段落</strong>：<code>&lt;h2&gt;研究兴趣&lt;/h2&gt;</code> 下面 <code>&lt;p&gt;</code> 文字</li>
+        <li><strong>「技术栈」标签</strong>：<code>&lt;span class="project-tag"&gt;Python&lt;/span&gt;</code> 这种结构</li>
+        <li><strong>「联系」按钮区</strong>：把 <code>[email protected]</code> 改成你的真实邮箱</li>
+        <li><strong>邮件</strong>：全局搜索 <code>mailto:[email protected]</code>，替换为你邮箱</li>
+        <li><strong>GitHub</strong>：全局搜索 <code>https://github.com/</code> 替换为你的仓库地址</li>
+      </ul>
+
+      <h3>3.4 修改网站标题（浏览器标签页文字）</h3>
+      <p>每个 HTML 文件的 <code>&lt;title&gt;Brian · 研究者 / 工程师&lt;/title&gt;</code> 改为自己想要的。<code>post.html</code> 的标题会被 <code>post.js</code> 动态覆盖为「文章标题 · Brian」，末尾的「· Brian」后缀在 <code>post.js</code> 第 30 行：</p>
+      <pre><code>document.title = `${post.title} · Brian`;</code></pre>
+
+      <h3>3.5 修改主题色 / 字体</h3>
+      <p>打开 <code>assets/css/style.css</code> 顶部 <code>:root</code> 块：</p>
+      <pre><code>--accent: #0071e3;            /* 主题色（Apple Blue） */
+--text: #1d1d1f;              /* 主文字色 */
+--bg: #ffffff;                /* 页面背景 */
+--font-sans: -apple-system... /* 字体栈 */</code></pre>
+      <p>暗色模式在 <code>@media (prefers-color-scheme: dark)</code> 块里，平行修改即可。想关掉暗色模式：把整个 <code>@media</code> 块删掉。</p>
+
+      <h3>3.6 新增一个分类 / 专栏</h3>
+      <p>比如想加「读书」分类（slug: <code>reading</code>）：</p>
+
+      <h4>1. 在 <code>data/posts.json</code> 的 <code>categories</code> 数组追加：</h4>
+      <pre><code>{ "slug": "reading", "name": "读书" }</code></pre>
+
+      <h4>2. 在 <code>posts/</code> 下新建 <code>reading/</code> 目录：</h4>
+      <pre><code>mkdir posts/reading</code></pre>
+
+      <h4>3. 以后往这个分类投稿：</h4>
+      <ul>
+        <li><code>posts/reading/{slug}.md</code></li>
+        <li><code>data/posts.json</code> 里 <code>category</code> 字段写 <code>"reading"</code></li>
+      </ul>
+      <p>分类 tab 会自动出现在博客页顶部，无需改 JS。</p>
+
+      <h3>3.7 增删首页板块</h3>
+      <p><code>index.html</code> 的结构是：</p>
+      <pre><code>&lt;header class="hero"&gt;...&lt;/header&gt;          /* 简介 */
+&lt;section class="section"&gt;...&lt;/section&gt;     /* 最新文章 */
+&lt;section class="section"&gt;...&lt;/section&gt;     /* 精选作品 */</code></pre>
+      <p><strong>加新区块</strong>（如「最近分享 / Newsletter 订阅 / 时间线」）：复制其中一个 <code>&lt;section class="section"&gt;...&lt;/section&gt;</code> 块，改标题和内容，必要的话写新的 <code>home.js</code> 渲染函数。</p>
+      <p><strong>删一个区块</strong>：直接删掉对应 <code>&lt;section&gt;</code> 整块。</p>
+
+      <h3>3.8 修改作品集布局</h3>
+      <p><code>portfolio.html</code> 里：</p>
+      <ul>
+        <li>顶部大图区：<code>&lt;div id="project-featured"&gt;</code>，由 <code>portfolio.js</code> 把 <code>featured: true</code> 的项目渲染进去</li>
+        <li>下方网格：<code>&lt;div id="project-grid"&gt;</code>，渲染其余项目</li>
+      </ul>
+      <p><strong>想改大图左右比例</strong>：编辑 <code>style.css</code> 中 <code>.project-feature-grid</code> 的 <code>grid-template-columns: 1fr 1fr;</code></p>
+      <p><strong>想要多张大图交错展示</strong>：把每个项目单独写一个 <code>&lt;div class="project-feature"&gt;...&lt;/div&gt;</code> 块，配合 <code>.project-feature.reverse</code> 类让图片左右交替（CSS 已支持）。</p>
+
+      <h3>3.9 全局修改（一次性搜替换）</h3>
+      <ul>
+        <li><strong>改用户名 / 邮箱 / GitHub 链接</strong>：在所有 HTML 文件里搜 <code>[email protected]</code> 或 <code>https://github.com/</code> 即可</li>
+        <li><strong>改页脚版权年份</strong>：<code>style.css</code> / 各 HTML 里搜 <code>2026</code></li>
+        <li><strong>改「Brian」品牌名</strong>：所有 HTML 顶部 <code>&lt;a class="nav-logo"&gt;Brian&lt;/a&gt;</code></li>
+      </ul>
+
+      <h3>3.10 R2 图床维护建议</h3>
+      <ul>
+        <li>启用 R2 公共桶 + 自定义域（推荐 <code>media.brian.com</code>）</li>
+        <li>文章配图统一目录：<code>media.brian.com/posts/{cat}/{slug}/</code></li>
+        <li>作品封面统一目录：<code>media.brian.com/projects/{slug}/</code></li>
+        <li>上传后粘 URL 即可，无需改任何代码</li>
+        <li>大图建议 1600px 宽，封面 1200px，缩略图用 R2 的图片处理（或用 <code>?w=1200</code> 这样的 query 参数 Unsplash 也支持）</li>
+      </ul>
+
+      <h3>3.11 性能与 SEO 进阶（可选）</h3>
+      <ul>
+        <li>给每篇文章配 OG image（在 <code>posts.json</code> 加 <code>ogImage</code> 字段，扩展 <code>post.html</code>）</li>
+        <li>想加 RSS：在根目录建 <code>feed.xml</code>，按 <code>posts.json</code> 排序生成</li>
+        <li>想加 sitemap：建 <code>sitemap.xml</code>，列所有 <code>post.html?slug=xxx</code></li>
+        <li>想加 PWA：建 <code>manifest.json</code> + 一个 service worker</li>
+        <li>想全站缓存控制：<code>post.html</code> 已加 no-store meta，可推广到其他页</li>
+      </ul>
+
+      <hr />
+
+      <h2 id="sec-4">四、紧急排错清单</h2>
+      <ul>
+        <li><strong>页面打开是空白 / 加载失败</strong>：F12 控制台看错误，多半是 JSON 写错（逗号、引号）→ 用 jsonlint.com 验证</li>
+        <li><strong>文章点了没反应</strong>：检查 <code>data/posts.json</code> 里 <code>file</code> 路径是否对</li>
+        <li><strong>图片 404</strong>：检查 R2 URL 是否可独立访问</li>
+        <li><strong>改了 CSS 没生效</strong>：<code>Cmd+Shift+R</code> 硬刷新</li>
+        <li><strong>改了 JS 报错</strong>：检查是否漏了函数、或者忘了 <code>escapeHTML</code></li>
+      </ul>
+
+      <hr />
+
+      <h2 id="sec-5">五、版本演进路线（可选）</h2>
+      <p>当内容变多 / 想加评论 / 搜索时：</p>
+      <ol>
+        <li><strong>评论</strong>：注入 utterances / giscus（基于 GitHub Issues）</li>
+        <li><strong>搜索</strong>：用 Fuse.js 在 <code>blog.js</code> 里做客户端模糊匹配</li>
+        <li><strong>标签聚合</strong>：在 <code>posts.json</code> 加 tags 字段，<code>blog.html</code> 加 tag 页</li>
+        <li><strong>RSS</strong>：在根目录写一个 build 脚本（GitHub Action）从 <code>posts.json</code> 生成 <code>feed.xml</code></li>
+      </ol>
+      <p>当觉得 5 个 HTML 重复太多时：迁移到 Eleventy / Astro / Hugo，保留同一套设计语言。这是当前的「天花板」边界 —— 纯静态已经够用很久了。</p>
+
+      <hr />
+      <p style="text-align: center; color: var(--text-tertiary);">指南结束。如需对任何模块做更细的拆解，告诉我。</p>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-inner">
+          <p class="footer-text">© <span data-year>2026</span> Brian. All rights reserved.</p>
+          <ul class="footer-links">
+            <li><a href="https://github.com/" target="_blank" rel="noopener">GitHub</a></li>
+            <li><a href="mailto:[email protected]">Email</a></li>
+            <li><a href="about.html">关于</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>

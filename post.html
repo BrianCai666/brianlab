@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>文章 · Brian</title>
+    <meta name="description" content="Brian 的写作：数学、金融、计算机、历史与杂谈。" />
+    <meta name="theme-color" content="#fbfbfd" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9A%A1%3C/text%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <nav class="nav">
+      <div class="nav-inner">
+        <a class="nav-logo" href="index.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="16 18 22 12 16 6"></polyline>
+            <polyline points="8 6 2 12 8 18"></polyline>
+          </svg>
+          Brian
+        </a>
+        <ul class="nav-links">
+          <li><a class="nav-link" href="index.html">首页</a></li>
+          <li><a class="nav-link" href="blog.html">博客</a></li>
+          <li><a class="nav-link" href="portfolio.html">作品</a></li>
+          <li><a class="nav-link" href="about.html">关于</a></li>
+        </ul>
+        <button class="nav-toggle" aria-label="菜单">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+      <div class="nav-mobile">
+        <a href="index.html">首页</a>
+        <a href="blog.html">博客</a>
+        <a href="portfolio.html">作品</a>
+        <a href="about.html">关于</a>
+      </div>
+    </nav>
+
+    <article>
+      <header class="post-hero container">
+        <a id="back-link" class="btn btn-ghost" style="margin-bottom: 24px; font-size: 0.875rem;" href="blog.html">← 返回博客</a>
+        <div class="post-category" id="post-category">分类</div>
+        <h1 class="post-title" id="post-title">加载中…</h1>
+        <div class="post-meta">
+          <span id="post-date"></span>
+        </div>
+      </header>
+
+      <div class="post-cover" id="post-cover" style="display:none">
+        <img id="post-cover-img" alt="" />
+      </div>
+
+      <div class="post-content container" id="post-content">
+        <div class="empty"><span class="spinner"></span></div>
+      </div>
+
+      <div class="container" style="max-width: 720px;">
+        <div id="post-tags" class="project-tags" style="margin: 48px 0; justify-content: center;"></div>
+        <div class="text-center" style="padding: 48px 0 24px; border-top: 1px solid var(--border); margin-top: 32px;">
+          <a class="btn btn-secondary" href="blog.html">浏览更多文章</a>
+        </div>
+      </div>
+    </article>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-inner">
+          <p class="footer-text">© <span data-year>2026</span> Brian. All rights reserved.</p>
+          <ul class="footer-links">
+            <li><a href="https://github.com/" target="_blank" rel="noopener">GitHub</a></li>
+            <li><a href="mailto:[email protected]">Email</a></li>
+            <li><a href="about.html">关于</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+    <!-- marked + highlight.js -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/styles/github-dark.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/highlight.min.js"></script>
+    <script>
+      marked.setOptions({
+        gfm: true,
+        breaks: false,
+      });
+    </script>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/post.js"></script>
+  </body>
+</html>

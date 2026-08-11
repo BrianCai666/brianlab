@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Brian · 研究者 / 工程师</title>
+    <meta
+      name="description"
+      content="Brian 的个人主页：研究、写作与作品。"
+    />
+    <meta name="theme-color" content="#fbfbfd" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9A%A1%3C/text%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <!-- ============ NAV ============ -->
+    <nav class="nav">
+      <div class="nav-inner">
+        <a class="nav-logo" href="index.html">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="16 18 22 12 16 6"></polyline>
+            <polyline points="8 6 2 12 8 18"></polyline>
+          </svg>
+          Brian
+        </a>
+        <ul class="nav-links">
+          <li><a class="nav-link" href="index.html">首页</a></li>
+          <li><a class="nav-link" href="blog.html">博客</a></li>
+          <li><a class="nav-link" href="portfolio.html">作品</a></li>
+          <li><a class="nav-link" href="about.html">关于</a></li>
+        </ul>
+        <button class="nav-toggle" aria-label="菜单">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+      <div class="nav-mobile">
+        <a href="index.html">首页</a>
+        <a href="blog.html">博客</a>
+        <a href="portfolio.html">作品</a>
+        <a href="about.html">关于</a>
+      </div>
+    </nav>
+
+    <!-- ============ HERO ============ -->
+    <header class="hero">
+      <div class="container">
+        <p class="hero-eyebrow reveal">Researcher · Engineer · Writer</p>
+        <h1 class="hero-title reveal">用代码与文字，<br />探索世界的底层逻辑。</h1>
+        <p class="hero-sub reveal">
+          数学、金融、计算机与历史之间的交叉地带。
+          这里记录我的思考、实验与作品。
+        </p>
+        <div class="hero-actions reveal">
+          <a class="btn btn-primary" href="blog.html">开始阅读</a>
+          <a class="btn btn-secondary" href="portfolio.html">查看作品</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- ============ FEATURED POSTS ============ -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="section-eyebrow">Writing</p>
+          <h2 class="section-title">最新文章</h2>
+          <p class="section-sub">关于思考、方法和偶然发现。</p>
+        </div>
+        <div class="grid grid-3 reveal-stagger" id="home-posts">
+          <!-- 由 blog.js 渲染最新 3 篇；此处放占位 -->
+          <div class="empty"><span class="spinner"></span></div>
+        </div>
+        <div class="text-center mt-12 reveal">
+          <a class="btn btn-ghost" href="blog.html">浏览全部文章</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FEATURED PROJECTS ============ -->
+    <section class="section" style="background: var(--bg-soft)">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="section-eyebrow">Portfolio</p>
+          <h2 class="section-title">作品集</h2>
+          <p class="section-sub">把想法变成可运行的代码。</p>
+        </div>
+        <div id="home-projects" class="reveal">
+          <div class="empty"><span class="spinner"></span></div>
+        </div>
+        <div class="text-center mt-12 reveal">
+          <a class="btn btn-ghost" href="portfolio.html">查看全部作品</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-inner">
+          <p class="footer-text">© <span data-year>2026</span> Brian. All rights reserved.</p>
+          <ul class="footer-links">
+            <li><a href="https://github.com/" target="_blank" rel="noopener">GitHub</a></li>
+            <li><a href="mailto:[email protected]">Email</a></li>
+            <li><a href="about.html">关于</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/home.js"></script>
+  </body>
+</html>
