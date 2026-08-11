@@ -1,4 +1,7 @@
 {
-  "category": { "slug": "mathematics", "name": "数学" },
+  "category": {
+    "slug": "math",
+    "name": "math"
+  },
   "posts": []
 }

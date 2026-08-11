@@ -1,0 +1,16 @@
+{
+  "name": "brianlab",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Brian's personal site — static blog + portfolio",
+  "scripts": {
+    "build": "node scripts/build.js",
+    "build:watch": "node --watch scripts/build.js",
+    "dev": "npm run build && python3 -m http.server 8000"
+  },
+  "dependencies": {
+    "glob": "^10.3.10",
+    "gray-matter": "^4.0.3"
+  }
+}

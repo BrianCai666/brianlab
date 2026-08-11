@@ -1,4 +1,7 @@
 {
-  "category": { "slug": "history", "name": "历史" },
+  "category": {
+    "slug": "history",
+    "name": "历史"
+  },
   "posts": []
 }

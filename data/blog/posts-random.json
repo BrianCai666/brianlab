@@ -1,4 +1,7 @@
 {
-  "category": { "slug": "random", "name": "杂谈" },
+  "category": {
+    "slug": "random",
+    "name": "杂谈"
+  },
   "posts": []
 }
