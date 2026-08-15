@@ -3,5 +3,16 @@
     "slug": "random",
     "name": "杂谈"
   },
-  "posts": []
+  "posts": [
+    {
+      "slug": "why-i-started-personal-website",
+      "title": "为什么我要创立个人网站",
+      "category": "random",
+      "date": "2026-08-15",
+      "excerpt": "为什么我要创立个人网站  梦开始的地方 今年这个暑假，我正式开始vibe coding。 短短两个月，我一共开发并部署了两个网站，分别是caseinterview(https://caseinterview.pages.dev/)和当前的个",
+      "cover": "https://pub-b20711fabf1a44b78a51c70e73615e18.r2.dev/posts/2026/08/",
+      "tags": [],
+      "file": "posts-dist/random/why-i-started-personal-website.md"
+    }
+  ]
 }

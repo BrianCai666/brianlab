@@ -16,3 +16,7 @@ Thumbs.db
 .vscode/
 .idea/
 *.swp
+
+# 图片全部走 R2，不入库
+assets/images/*
+!assets/images/.gitkeep
